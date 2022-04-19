@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Банкомат</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="atm" v-if="active">
+        <div class="header">FLEECA ATM</div>
+        <div class="container">
+            <div class="input"><input type="text" placeholder="Введите сумму" v-model="money"></div>
+            <div class="text">При снятии средств комиссия банка составляет 3%</div>
+        </div>
+        <div class="buttons">
+            <div class="button" @click="transition()">СНЯТЬ</div>
+            <div class="button" @click="close()">ВЫЙТИ</div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

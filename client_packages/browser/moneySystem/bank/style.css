@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700;800&display=swap');
+
+* {
+    font-family: 'Oswald';
+    user-select: none;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    letter-spacing: 0.1em;
+}
+
+.bank {
+    position: absolute;
+    background: rgba(25, 25, 25, 0.9);
+    background-size: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.bank .top_block {}
+
+.bank .top_block .header {
+    position: absolute;
+    top: 61px;
+    left: 57px;
+    font-weight: 600;
+    font-size: 46px;
+    color: #ffffff;
+    line-height: 58px;
+}
+
+.bank .top_block .buttons {
+    position: absolute;
+    top: 61px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
+}
+
+.bank .top_block .buttons .button {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.16);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    padding: 10px 0px;
+    width: 170px;
+    font-weight: 400;
+    font-size: 25px;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: 40px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.bank .top_block .buttons .button:first-child {
+    margin-left: 0;
+}
+
+.bank .top_block .buttons .button.active {
+    background: #D4400E;
+    border: 2px solid rgba(212, 64, 14, 0.8);
+    box-shadow: 0 0 20px 10px #BA2600;
+	transition: 0.4s;
+}
+
+.bank .top_block .buttons .button:hover {
+    background: #D4400E;
+    border: 2px solid rgba(212, 64, 14, 0.8);
+    box-shadow: 0 0 20px 10px #BA2600;
+	transition: 0.4s;
+}
+
+.bank .middle_block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bank .middle_block .container {}
+
+.bank .middle_block .container .replenishment {
+    color: #ffffff;
+    text-align: -webkit-center;
+}
+
+.bank .middle_block .container .replenishment .input {
+    background: #121212;
+    border: 2px solid #3E3E3E;
+    padding: 19px 26px;
+    border-radius: 5px;
+    width: 500px;
+    margin-bottom: 25px;
+}
+
+.bank .middle_block .container .replenishment .input input {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 28px;
+}
+
+.bank .middle_block .container .replenishment .input input::placeholder {}
+
+.bank .middle_block .container .replenishment .text{
+    width: 495px;
+    font-weight: 400;
+    font-size: 28px;
+}
+
+.bank .middle_block .container .replenishment {}
+
+.bank .middle_block .container .replenishment .input {
+    background: #121212;
+    border: 2px solid #3E3E3E;
+    padding: 19px 26px;
+    border-radius: 5px;
+    width: 500px;
+    margin-bottom: 25px;
+}
+
+.bank .middle_block .container .replenishment .input input {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 28px;
+}
+
+.bank .middle_block .container .replenishment .input input::placeholder {}
+
+.bank .middle_block .container .replenishment .text{
+    width: 495px;
+    font-weight: 400;
+    font-size: 28px;
+}
+
+.bank .middle_block .container .withdrawal {
+    color: #ffffff;
+    text-align: -webkit-center;
+}
+
+.bank .middle_block .container .withdrawal .input {
+    background: #121212;
+    border: 2px solid #3E3E3E;
+    padding: 19px 26px;
+    border-radius: 5px;
+    width: 500px;
+    margin-bottom: 25px;
+}
+
+.bank .middle_block .container .withdrawal .input input {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 28px;
+}
+
+.bank .middle_block .container .withdrawal .input input::placeholder {}
+
+.bank .middle_block .container .withdrawal .text{
+    width: 495px;
+    font-weight: 400;
+    font-size: 28px;
+}
+
+.bank .bottom_block {}
+
+.bank .bottom_block .button {
+    position: absolute;
+    bottom: 61px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.16);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    padding: 10px 0;
+    width: 200px;
+    text-align: center;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 25px;
+    transition: 0.4s;
+}
+
+.bank .bottom_block .button:hover {
+    background: #D4400E;
+    border: 2px solid rgba(212, 64, 14, 0.8);
+    box-shadow: 0 0 20px 10px #BA2600;
+	transition: 0.4s;
+}
+
+.bank .bottom_block .exit {
+    position: absolute;
+    bottom: 61px;
+    right: 57px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.16);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    padding: 10px 40px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 25px;
+    transition: 0.4s;
+}
+
+.bank .bottom_block .exit:hover {
+    background: #D4400E;
+    border: 2px solid rgba(212, 64, 14, 0.8);
+    box-shadow: 0 0 20px 10px #BA2600;
+	transition: 0.4s;
+}
+
+@media  (max-width: 1100px)  {
+    body {zoom: 60%}
+}
+@media  (max-width: 1300px)  {
+    body {zoom: 70%}
+}
+@media (min-width: 1301px) and (max-width: 1400px) {
+    body {zoom: 80%}
+}
+@media (min-width: 1401px) and (max-width: 1650px) {
+    body {zoom: 90%}
+}
+@media (min-width: 1651px) and (max-width: 2560px) {
+    body {zoom: 100%}
+}

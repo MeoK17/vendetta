@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700;800&display=swap');
+
+* {
+    font-family: 'Oswald';
+    user-select: none;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    letter-spacing: 0.1em;
+}
+
+.hud {}
+
+.hud .money {
+    position: absolute;
+    top: 5%;
+    right: 2%;
+}
+
+.hud .money .wallet {font-weight: 400;font-size: 20px;}
+
+.hud .money .wallet .text  {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+}
+.hud .money .wallet .text  .givewallet {
+    margin-right: 7px;
+    font-weight: 400;
+    font-size: 15px;
+    color: #5EE449;
+}
+
+.hud .money .wallet .text  .icon {
+    width: 50px;
+    height: 50px;
+    background: #121212;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 53px;
+    margin-left: 12px;
+}
+
+.hud .money .bank {
+    position: absolute;
+    right: 0;
+    margin-top: 16px;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.hud .money .bank .text  {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+}
+
+.hud .money .bank .text .givebank {
+    margin-right: 7px;
+    font-weight: 400;
+    font-size: 15px;
+    color: #5EE449;
+}
+
+.hud .money .bank .text .icon {
+    width: 50px;
+    height: 50px;
+    background: #121212;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 53px;
+    margin-left: 12px;
+}
+
+
+@media  (max-width: 1100px)  {
+    body {zoom: 60%}
+}
+@media  (max-width: 1300px)  {
+    body {zoom: 70%}
+}
+@media (min-width: 1301px) and (max-width: 1400px) {
+    body {zoom: 80%}
+}
+@media (min-width: 1401px) and (max-width: 1650px) {
+    body {zoom: 90%}
+}
+@media (min-width: 1651px) and (max-width: 2560px) {
+    body {zoom: 100%}
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="auth" v-if="auth">
+            <h1>Вход</h1>
+            <div class="input-block">
+                <div class="input">
+                    <input type="text" v-model="login" placeholder="Логин / E-mail">
+                </div>
+                <div class="input">
+                    <input type="password" v-model="password" placeholder="Пароль">
+                </div>
+            </div>
+            <div class="checkbox-block">
+                <input type="checkbox" id="color-1">
+                <label for="color-1">Запомнить меня</label>
+            </div>
+            <div class="buttons-block">
+                <div class="button yellow" v-on:click="select('auth')">Войти</div>
+                <div class="button white" v-on:click="select('registerShow')">Создать аккаунт</div>
+            </div>
+            <div class="bottom-block">
+                <div class="text">Забыл пароль? <span v-on:click="select('restoreShow')">Восстановить</span></div>
+            </div>
+        </div>
+        <div class="register" v-if="register">
+            <h1>Создание аккаунта</h1>
+            <div class="input-block">
+                <div class="input">
+                    <input type="mail" v-model="email" placeholder="E-mail">
+                </div>
+                <div class="input">
+                    <input type="text" v-model="login" placeholder="Логин">
+                </div>
+                <div class="input">
+                    <input type="password" v-model="password" placeholder="Пароль">
+                </div>
+                <div class="input">
+                    <input type="password" v-model="confirmPassword" placeholder="Повторите пароль">
+                </div>
+            </div>
+            <div class="buttons-block">
+                <div class="button yellow" v-on:click="select('register')">Создать</div>
+                <div class="button white" v-on:click="select('authShow')">Вернуться</div>
+            </div>
+        </div>
+        <div class="restore" v-if="restore">
+            <h1>Восстановление</h1>
+            <div class="input-block">
+                <div class="input">
+                    <input type="mail" v-model="email" placeholder="E-mail">
+                </div>
+            </div>
+            <div class="buttons-block">
+                <div class="button yellow" v-on:click="select('restore')">Выслать код</div>
+                <div class="button white" v-on:click="select('authShow')">Вернуться</div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

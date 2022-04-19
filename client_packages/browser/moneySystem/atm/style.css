@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700;800&display=swap');
+
+* {
+    font-family: 'Oswald';
+    user-select: none;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    letter-spacing: 0.1em;
+}
+
+.atm {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 100%;
+    width: 692px;
+    text-align: center;
+    background: rgba(18, 18, 18, 0.9);
+    color: #ffffff;
+}
+
+.atm .header {
+    position: absolute;
+    background: #D4400E;
+    font-weight: 600;
+    font-size: 50px;
+    padding: 15px;
+    width: 100%;
+    top: 80px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    box-shadow: 0 0 20px 10px #BA2600;
+}
+
+.atm .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.atm .container .input {
+    background: #121212;
+    border: 2px solid #3E3E3E;
+    padding: 23px;
+    width: 500px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+
+.atm .container .input input {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    font-weight: 400;
+    font-size: 28px;
+    color: #ffffff;
+}
+
+.atm .container .text {
+    font-weight: 400;
+    font-size: 28px;
+}
+
+.atm .buttons {
+    position: absolute;
+    bottom: 61px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.atm .buttons .button {
+    background: rgba(255, 255, 255, 0.16);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    padding: 14px 0;
+    border-radius: 5px;
+    width: 264px;
+    margin-top: 20px;
+    font-weight: 400;
+    font-size: 28px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.atm .buttons .button:first-child {
+    margin-top: 0;
+}
+
+.atm .buttons .button:hover {
+    background: #D4400E;
+    border: 2px solid rgba(212, 64, 14, 0.8);
+    box-shadow: 0 0 20px 10px #BA2600;
+	transition: 0.4s;
+}
+
+@media  (max-width: 1100px)  {
+    body {zoom: 60%}
+}
+@media  (max-width: 1300px)  {
+    body {zoom: 70%}
+}
+@media (min-width: 1301px) and (max-width: 1400px) {
+    body {zoom: 80%}
+}
+@media (min-width: 1401px) and (max-width: 1650px) {
+    body {zoom: 90%}
+}
+@media (min-width: 1651px) and (max-width: 2560px) {
+    body {zoom: 100%}
+}

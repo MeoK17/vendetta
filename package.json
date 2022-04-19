@@ -1,0 +1,19 @@
+{
+  "name": "Meo",
+  "version": "1.0.0",
+  "description": "Developer server RAGE MP",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "Sammy <sammy@your_domain> (https://your_domain)",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/ragemp-c": "https://github.com/CocaColaBear/types-ragemp-c/tarball/master",
+    "@types/ragemp-s": "https://github.com/CocaColaBear/types-ragemp-s/tarball/master"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "global": "^4.4.0",
+    "mysql": "^2.18.1"
+  }
+}
