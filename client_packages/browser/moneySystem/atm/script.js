@@ -2,14 +2,26 @@ let atm = new Vue({
     el: '.atm',
     data: {
         active: false,
-        money: 0
+        street: 'СЭНДИШОРС',
+        playerName: 'Meo',
+        money: null,
+        takePosition: null,
+        takesSum: [
+            {id: 1, sum: 10},
+            {id: 2, sum: 25},
+            {id: 3, sum: 50},
+            {id: 4, sum: 100},
+            {id: 5, sum: 1000},
+            {id: 6, sum: 2000},
+        ],
     },
     methods: {
-        transition: function() {
-            mp.trigger("moneySystem:Transition", JSON.stringify({type: "money", money: this.money}));
+        transition: function(type) {
+            mp.trigger("moneySystem:Transition", JSON.stringify({type: type, money: this.money}));
         },
         close: function() {
-            this.money = 0;
+            this.money = null;
+            this.takePosition = null;
             mp.trigger("moneySystem:HideAtmDialog");
         },
     }

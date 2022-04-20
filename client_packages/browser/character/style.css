@@ -1,0 +1,395 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700;800&display=swap');
+
+* {
+    font-family: 'Oswald';
+    user-select: none;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    letter-spacing: 0.1em;
+}
+
+.character {}
+
+.character .characterSelect {
+    position: absolute;
+    top: 50%;
+    left: 57px;
+    transform: translate(0, -50%);
+    max-width: 422px;
+}
+
+.character .characterSelect .container {
+    padding: 16px 25px 33px 25px;
+    background: rgba(34, 50, 84, 0.9);
+}
+
+.character .characterSelect .container h1 {
+    font-weight: 500;
+    font-size: 28px;
+    color: #ffffff;
+}
+
+.character .characterSelect .container .list {}
+
+.character .characterSelect .container .list .block {
+    font-weight: 400;
+    font-size: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    color: #ffffff;
+    padding: 10px 23px;
+    margin-top: 20px;
+    transition: .4s;
+}
+
+.character .characterSelect .container .list .block:first-child {
+    margin-top: 29px;
+}
+
+.character .characterSelect .container .list .block:hover {
+    transition: .4s;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.character .characterSelect .container .list .block.active {
+    background: #FFC500;
+    color: #200500;
+}
+
+.character .characterSelect .buttons {
+    display: flex;
+    margin-top: 26px;
+}
+
+.character .characterSelect .buttons .generate {
+    color: #200500;
+    background: #FFC500;
+    width: 100%;
+    padding: 14px 16px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 28px;
+    margin-right: 11px;
+    transition: .4s;
+    cursor: pointer;
+}
+
+.character .characterSelect .buttons .generate:hover {
+    transition: .4s;
+    background: #DEA400;
+}
+
+.character .characterSelect .buttons .dance {
+    min-width: 69.42px;
+    height: 69.42px;
+    transition: .4s;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.character .characterSelect .buttons .dance:hover {
+    background: #C2C2C2;
+    transition: .4s;
+}
+
+.character .characterSelect .buttons .dance svg {
+    padding: 14px 22px;
+}
+
+.character .createCharacter {
+    position: absolute;
+    top: 50%;
+    right: 57px;
+    transform: translate(0, -50%);
+    background: rgba(34, 50, 84, 0.9);
+    padding: 16px 25px 33px 25px;
+    max-width: 342px;
+    max-height: 633px;
+    width: 342px;
+}
+
+.character .createCharacter .heredity {
+}
+
+.character .createCharacter h1 {font-weight: 500;font-size: 24px;color: #ffffff;}
+
+.character .createCharacter .floor {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.character .createCharacter .floor .male {
+    width: 134px;
+    height: 134px;
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: .4s;
+}
+
+.character .createCharacter .floor .male:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transition: .4s;
+}
+
+.character .createCharacter .floor .male.active {
+    background: #FFC500;
+}
+
+.character .createCharacter .floor .male svg {
+    padding: 35px 35px 32px 32px;
+}
+
+.character .createCharacter .floor .female {
+    width: 134px;
+    height: 134px;
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: .4s;
+}
+
+.character .createCharacter .floor .female:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transition: .4s;
+}
+
+.character .createCharacter .floor .female.active {
+    background: #FFC500;
+    transition: .4s;
+}
+
+.character .createCharacter .floor .female svg {
+    padding: 32.9px 46.5px;
+    position: absolute;
+}
+
+.character .createCharacter .parents {
+    margin-top: 31px;
+}
+
+.character .createCharacter .fatherBlock  {
+    margin-top: 20px;
+}
+
+.character .createCharacter .fatherBlock:first-child  {
+    margin-top: 0;
+}
+
+.character .createCharacter .fatherBlock label  {
+    font-weight: 400;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.character .createCharacter .fatherBlock .list  {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 400;
+    font-size: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    height: 45px;
+    place-items: center;
+    margin-top: 2px;
+}
+
+.character .createCharacter .fatherBlock .list .left  {
+    width: 45px;
+    height: 45px;
+    color: #200500;
+    background: #FFC500;
+    text-align: center;
+    font-size: 40px;
+    line-height: 38px;
+    cursor: pointer;
+}
+
+.character .createCharacter .fatherBlock .list .listval  {
+    color: #ffffff;
+}
+
+.character .createCharacter .fatherBlock .list .right  {
+    width: 45px;
+    height: 45px;
+    color: #200500;
+    background: #FFC500;
+    text-align: center;
+    font-size: 40px;
+    line-height: 38px;
+    cursor: pointer;
+}
+
+.character .createCharacter .listElement {
+    max-height: 525px;
+    overflow: overlay;
+}
+
+.character .createCharacter .listElement::-webkit-scrollbar-track {
+    -webkit-box-shadow: none;
+}
+
+.character .createCharacter .listElement::-webkit-scrollbar {
+    width: 7px;
+    background-color: transparent;
+}
+
+.character .createCharacter .listElement::-webkit-scrollbar-thumb {
+    background: none;
+}
+
+.character .createCharacter .element {
+    transform: translate(0%, 0%);
+    left: 0;
+    margin-top: 35px;
+    margin-bottom: 25px;
+}
+
+.character .createCharacter .element label {
+    font-weight: 400;
+    font-size: 20px;
+    color: #FFFFFF;
+    position: relative;
+}
+
+.character .createCharacter .element .slider {
+    position: relative;
+    margin-top: 2px;
+}
+
+.character .createCharacter .element span {
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin-top: 2px;
+}
+
+.character .finalBlock {
+    position: absolute;
+    bottom: 62px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.character .finalBlock .age {}
+
+.character .finalBlock .age label {
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.character .finalBlock .input {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 16px 20px;
+}
+
+.character .finalBlock .input input {
+    width: 100%;
+    background: none;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 24px;
+    border: none;
+    outline: none;
+}
+
+.character .finalBlock .input input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.character .finalBlock .button {
+    background: #FFC500;
+    text-align: center;
+    padding: 14px;
+    font-weight: 400;
+    font-size: 28px;
+    color: #200500;
+    margin-top: 30px;
+    transition: .4s;
+    cursor: pointer;
+}
+
+.character .finalBlock .button:hover {
+    background: #DEA400;
+    transition: .4s;
+}
+
+@media  (max-width: 1100px)  {
+    body {zoom: 60%}
+}
+@media  (max-width: 1300px)  {
+    body {zoom: 70%}
+}
+@media (min-width: 1301px) and (max-width: 1400px) {
+    body {zoom: 80%;}
+}
+@media (min-width: 1401px) and (max-width: 1650px) {
+    body {zoom: 90%}
+}
+@media (min-width: 1651px) and (max-width: 2560px) {
+    body {zoom: 100%}
+}
+
+
+.rangeslider,.rangeslider__fill {
+    display: block;
+    border-radius: 10px;
+}
+
+.rangeslider {
+    background: #e6e6e6;
+    position: relative
+}
+
+.rangeslider--horizontal {
+    height: 9px;
+    width: 100%;
+    background: #ffffff10;
+}
+
+.rangeslider--vertical {
+    width: 10px;
+    min-height: 150px;
+    max-height: 100%
+}
+
+.rangeslider__fill {
+    background: #FFC500;
+    position: absolute
+}
+
+.rangeslider--horizontal .rangeslider__fill {
+    top: 0;
+    height: 100%;
+}
+
+.rangeslider--vertical .rangeslider__fill {
+    bottom: 0;
+    width: 100%;
+}
+
+.rangeslider__handle {
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    background-color: #FFC500;
+    border-radius: 50%;
+}
+
+.rangeslider--horizontal .rangeslider__handle {
+    top: -3px;
+    touch-action: pan-y;
+    -ms-touch-action: pan-y
+}
+
+.rangeslider--vertical .rangeslider__handle {
+    left: -10px;
+    touch-action: pan-x;
+    -ms-touch-action: pan-x
+}

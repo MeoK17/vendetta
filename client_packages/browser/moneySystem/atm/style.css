@@ -13,26 +13,40 @@ body {
 
 .atm {
     position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
     height: 100%;
-    width: 692px;
-    text-align: center;
-    background: rgba(18, 18, 18, 0.9);
-    color: #ffffff;
+    width: 100%;
+    background: rgba(34, 50, 84, 0.9);
 }
 
 .atm .header {
     position: absolute;
-    background: #D4400E;
-    font-weight: 600;
-    font-size: 50px;
-    padding: 15px;
-    width: 100%;
-    top: 80px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    box-shadow: 0 0 20px 10px #BA2600;
+    top: 62px;
+    left: 57px;
+    color: #ffffff;
+}
+
+.atm .header h1 {
+    font-weight: 500;
+    font-size: 35px;
+}
+
+.atm .header .text {
+    font-weight: 500;
+    font-size: 25px;
+    margin-top: 12px;
+}
+
+.atm .header .text span {
+    color: #FFC500;
+}
+
+.atm .street {
+    position: absolute;
+    top: 62px;
+    right: 57px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 35px;
 }
 
 .atm .container {
@@ -42,73 +56,156 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.atm .container .input {
-    background: #121212;
-    border: 2px solid #3E3E3E;
-    padding: 23px;
-    width: 500px;
-    border-radius: 5px;
-    margin-bottom: 25px;
+.atm .container .takeoff {}
+
+.atm .container .takeoff h1 {
+    font-weight: 500;
+    font-size: 28px;
+    color: #ffffff;
 }
 
-.atm .container .input input {
-    width: 100%;
+.atm .container .takeoff .block {
+    margin-top: 12px;
+    max-width: 500px;
+    text-align: center;
+}
+
+.atm .container .takeoff .block span {
+    font-weight: 400;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.atm .container .takeoff .block .list {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.atm .container .takeoff .block .list .sum {
+    font-weight: 400;
+    font-size: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    width: 240px;
+    padding: 20px 0;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.atm .container .takeoff .block .list .sum:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(5)):not(:nth-child(6))   {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.atm .container .takeoff .block .list .sum:not(:nth-child(1)):not(:nth-child(3)):not(:nth-child(5)) {
+    margin-left: 20px;
+}
+
+.atm .container .takeoff .block .list .sum:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transition: .4s;
+}
+
+.atm .container .takeoff .block .list .sum.active {
+    background: #FFC500;
+    color: #200500;
+    transition: .4s;
+}
+
+.atm .container .takeoff .block .input {
+    margin-top: 33px;
+    padding: 16px 24px;
+    background: rgba(255, 255, 255, 0.1);
+    text-align: left;
+}
+
+.atm .container .takeoff .block .input input {
+    font-weight: 400;
+    font-size: 28px;
     background: none;
     border: none;
     outline: none;
+    color: #ffffff;
+    width: 100%;
+}
+
+.atm .container .takeoff .block .input input::-webkit-outer-spin-button,
+.atm .container .takeoff .block .input input::-webkit-inner-spin-button {
+    display: none;
+}
+
+.atm .container .takeoff .block .input input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.atm .final {
+    position: absolute;
+    bottom: 62px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.atm .final .text {
+    text-align: right;
+    width: 480px;
     font-weight: 400;
     font-size: 28px;
     color: #ffffff;
 }
 
-.atm .container .text {
-    font-weight: 400;
-    font-size: 28px;
+.atm .final .buttons {
+    margin-top: 31px;
+    display: flex;
 }
 
-.atm .buttons {
-    position: absolute;
-    bottom: 61px;
-    left: 50%;
-    transform: translate(-50%, 0);
-}
-
-.atm .buttons .button {
-    background: rgba(255, 255, 255, 0.16);
-    border: 2px solid rgba(255, 255, 255, 0.15);
+.atm .final .buttons .button {
+    width: 100%;
     padding: 14px 0;
-    border-radius: 5px;
-    width: 264px;
-    margin-top: 20px;
+    text-align: center;
     font-weight: 400;
     font-size: 28px;
-    transition: 0.4s;
+    color: #200500;
+    margin-left: 20px;
+    transition: .4s;
     cursor: pointer;
 }
 
-.atm .buttons .button:first-child {
-    margin-top: 0;
+.atm .final .buttons .button:first-child {
+    margin-left: 0;
 }
 
-.atm .buttons .button:hover {
-    background: #D4400E;
-    border: 2px solid rgba(212, 64, 14, 0.8);
-    box-shadow: 0 0 20px 10px #BA2600;
-	transition: 0.4s;
+.atm .final .buttons .button.yellow {
+    background: #FFC500;
+}
+
+.atm .final .buttons .button.white {
+    background: #FFFFFF;
+}
+
+.atm .final .buttons .button.yellow:hover {
+    background: #D39900;
+    transition: .4s;
+}
+
+.atm .final .buttons .button.white:hover {
+    background: #C2C2C2;
+    transition: .4s;
 }
 
 @media  (max-width: 1100px)  {
-    body {zoom: 60%}
+    body {zoom: 50%}
 }
 @media  (max-width: 1300px)  {
-    body {zoom: 70%}
+    body {zoom: 60%}
 }
 @media (min-width: 1301px) and (max-width: 1400px) {
-    body {zoom: 80%}
+    body {zoom: 70%}
 }
 @media (min-width: 1401px) and (max-width: 1650px) {
-    body {zoom: 90%}
+    body {zoom: 80%}
 }
 @media (min-width: 1651px) and (max-width: 2560px) {
-    body {zoom: 100%}
+    body {zoom: 90%}
 }

@@ -3,18 +3,35 @@
 <head>
     <title>Банкомат</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="atm" v-if="active">
-        <div class="header">FLEECA ATM</div>
-        <div class="container">
-            <div class="input"><input type="text" placeholder="Введите сумму" v-model="money"></div>
-            <div class="text">При снятии средств комиссия банка составляет 3%</div>
+    <div class="atm" v-show="active">
+        <div class="header">
+            <h1>Банкомат</h1>
+            <div class="text">
+                <span>Добро пожаловать</span> {{playerName}}
+            </div>
         </div>
-        <div class="buttons">
-            <div class="button" @click="transition()">СНЯТЬ</div>
-            <div class="button" @click="close()">ВЫЙТИ</div>
+        <div class="street">{{street}}</div>
+        <div class="container">
+            <div class="takeoff">
+                <h1>Снятие наличных</h1>
+                <div class="block">
+                    <span>Выберите сумму которую хотели бы снять:</span>
+                    <div class="list">
+                        <div v-for="takeSum in takesSum" :class="money == takeSum.sum ? `active` : ''" @click="money = takeSum.sum;" class="sum">{{takeSum.sum}}$</div>
+                    </div>
+                    <div class="input"><input type="text" maxlength="9" v-model="money" placeholder="Введите сумму"></div>
+                </div>
+            </div>
+        </div>
+        <div class="final">
+            <div class="text">При снятии наличных комиссия банка составляет 3%</div>
+            <div class="buttons">
+                <div class="button white" @click="close()">Выйти</div>
+                <div class="button yellow" @click="transition('money')">Снять</div>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>

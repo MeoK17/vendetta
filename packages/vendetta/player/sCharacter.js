@@ -4,7 +4,6 @@ const freemodeCharacters = [mp.joaat("mp_m_freemode_01"), mp.joaat("mp_f_freemod
 const creatorPlayerPos = new mp.Vector3(402.8664, -996.4108, -99.00027);
 const creatorPlayerHeading = -185.0;
 
-// this will increase by 1 every time a player is sent to the character creator
 let creatorDimension = 1;
 
 mp.events.add("playerJoin", (player) => {
@@ -127,9 +126,9 @@ mp.events.add("playerJoin", (player) => {
             }
             this.applyCharacter();
         } catch {
-            console.error(`player.loadCharacter: Исправить позже`);
+            //console.error(`player.loadCharacter: Исправить позже`);
             this.defaultCharacter();
-            this.needUpdateCharacter = true;
+            player.sendToCreator();
         }
     };
 
@@ -166,7 +165,7 @@ mp.events.add("playerJoin", (player) => {
         player.dimension = creatorDimension;
         player.usingCreator = true;
         player.changedGender = false;
-        player.call("CreatorCamera");
+        player.call("character:CreatorCamera");
 
         creatorDimension++;
     };
@@ -177,18 +176,18 @@ mp.events.add("playerJoin", (player) => {
         player.dimension = player.preCreatorDimension;
         player.usingCreator = false;
         player.changedGender = false;
-        player.call("DestroyCamera");
+        player.call("character:DestroyCamera");
     };
 });
 
-mp.events.add("creator_GenderChange", (player, gender) => {
+/*mp.events.add("creator_GenderChange", (player, gender) => {
     player.model = freemodeCharacters[gender];
     player.position = creatorPlayerPos;
     player.heading = creatorPlayerHeading;
     player.changedGender = true;
-});
+});*/
 
-mp.events.add("SaveCharacter", (player, gender, father, mother, similarity, skinSimilarity, featureData, appearanceData, hairAndColorData) => {
+mp.events.add("character:SaveCharacter", (player, gender, father, mother, similarity, skinSimilarity, featureData, appearanceData, hairAndColorData) => {
     player.customCharacter.Gender = gender;
     player.customCharacter.Father = father;
     player.customCharacter.Mother = mother;

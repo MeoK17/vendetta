@@ -1,269 +1,295 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-	<title>Character</title>
+    <title>Character</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="fonts/font/stylesheet.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="css/index.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700" rel="stylesheet">
-	<script src="./js/library/vue.js"></script>
+    <link rel="stylesheet" href="./style.css">
 </head>
-
 <body>
-	<div id="app">
-		<div @click="random()" class="btnrand"><img src="./img/dice.svg" class="ico"></div>
-		<div @click="dancing()" class="btndance"><img src="./img/dancing.svg" class="ico2"></div>
-		<div class="leftblock">
-			<a>Создание персонажа</a>
-			<input type="text" v-model="age" placeholder="Возраст..." class="inputages" maxlength="3" onkeyup="this.value = this.value.replace (/[^0-9+]/, '')">
-			<div class="alllistcr">
-				<div v-if="pages == 0" class="blockcr active">Наследственность<img src="./img/arrow.png" class="arrow"></div>
-				<div @click="gopage(0)" v-if="pages != 0" class="blockcr">Наследственность<img src="./img/arrow.png" class="arrow"></div>
-				<div v-if="pages == 1" class="blockcr active">Части лица<img src="./img/arrow.png" class="arrow"></div>
-				<div @click="gopage(1)" v-if="pages != 1" class="blockcr">Части лица<img src="./img/arrow.png" class="arrow"></div>
-				<div @click="gopage(2)" v-if="pages == 2" class="blockcr active">Внешний вид<img src="./img/arrow.png" class="arrow"></div>
-				<div @click="gopage(2)" v-if="pages != 2" class="blockcr">Внешний вид<img src="./img/arrow.png" class="arrow"></div>
-				<div @click="gopage(3)" v-if="pages == 3" class="blockcr active">Растительность<img src="./img/arrow.png" class="arrow"></div>
-				<div @click="gopage(3)" v-if="pages != 3" class="blockcr">Растительность<img src="./img/arrow.png" class="arrow"></div>
-				<div @click="gopage(4)" v-if="pages == 4" class="blockcr active">Одежда<img src="./img/arrow.png" class="arrow"></div>
-				<div @click="gopage(4)" v-if="pages != 4" class="blockcr">Одежда<img src="./img/arrow.png" class="arrow"></div>
-			</div>
-			<div @click="save" class="btncreate">Создать персонажа</div>
-			<div class="lineapp"></div>
-		</div>
-		<div class="rightblock">
-			<div v-if="pages == 0">
-				<a>Наследственность</a>
-				<div class="genders">
-					<div @click="genderSw(true)" v-if="gender" class="male active"><img src="./img/male.svg" class="icog"></div>
-					<div @click="genderSw(true)" v-if="!gender" class="male"><img src="./img/male.svg" class="icog"></div>
-					<div @click="genderSw(false)" v-if="gender" class="female"><img src="./img/female.svg" class="icog"></div>
-					<div @click="genderSw(false)" v-if="!gender" class="female active"><img src="./img/female.svg" class="icog"></div>
-				</div>
-				<div class="lineapp2"></div>
-				<div class="fatherblock">
-					<p>Отец</p>
-					<list id="father" num=""></list>
-				</div>
-				<div style="margin-top: 5vw;" class="fatherblock">
-					<p>Мать</p>
-					<list id="mother" num=""></list>
-				</div>
-				<div style="margin-top: 24.5vw;" class="element">
+    <div class="character">
+        <div class="characterSelect">
+            <div class="container">
+                <h1>Создание персонажа</h1>
+                <div class="list">
+                    <div class="block" @click="gopage(0)" :class="pages == 0 ? `active` : ''">Наследственность</div>
+                    <div class="block" @click="gopage(1)" :class="pages == 1 ? `active` : ''">Части лица</div>
+                    <div class="block" @click="gopage(2)" :class="pages == 2 ? `active` : ''">Внешний вид</div>
+                    <div class="block" @click="gopage(3)" :class="pages == 3 ? `active` : ''">Растительность</div>
+                    <div class="block" @click="gopage(4)" :class="pages == 4 ? `active` : ''">Одежда</div>
+                </div>
+            </div>
+            <div class="buttons">
+                <div class="generate" @click="random()">Сгенерировать персонажа</div>
+                <div class="dance" @click="dancing()">
+                    <svg width="27" height="41" viewBox="0 0 27 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.3856 0C12.4526 0 10.8856 1.56701 10.8856 3.5C10.8856 5.43299 12.4526 7 14.3856 7C16.3186 7 17.8856 5.43299 17.8856 3.5C17.8856 1.56701 16.3186 0 14.3856 0ZM1.47939 6.3125C1.43729 6.32112 1.39559 6.33155 1.35439 6.34375C1.07041 6.37147 0.800229 6.47961 0.575541 6.65547C0.350853 6.83133 0.180976 7.06762 0.0858422 7.33662C-0.00929205 7.60562 -0.0257387 7.89617 0.0384321 8.17419C0.102603 8.45221 0.24473 8.70616 0.448138 8.90625L4.79189 13.2812C4.96583 13.4639 5.183 13.5997 5.42333 13.6762C5.66367 13.7526 5.9194 13.7673 6.16689 13.7188L9.91689 12.9375H9.94814C9.96449 13.1036 9.94546 13.2772 9.97939 13.4375L10.8856 24H10.9169V30V39C10.9141 39.1988 10.9508 39.3961 11.0249 39.5806C11.099 39.765 11.2091 39.9329 11.3486 40.0745C11.4882 40.216 11.6545 40.3284 11.8379 40.4051C12.0213 40.4819 12.2181 40.5214 12.4169 40.5214C12.6157 40.5214 12.8125 40.4819 12.9959 40.4051C13.1793 40.3284 13.3456 40.216 13.4851 40.0745C13.6247 39.9329 13.7347 39.765 13.8089 39.5806C13.883 39.3961 13.9197 39.1988 13.9169 39V30V24H15.1669L18.2294 31.7812C18.2837 31.9162 18.3574 32.0425 18.4481 32.1562L23.7919 39.1875C23.9027 39.3643 24.0491 39.516 24.2219 39.633C24.3946 39.75 24.5899 39.8296 24.7951 39.8669C25.0004 39.9041 25.2112 39.8982 25.414 39.8493C25.6169 39.8005 25.8073 39.71 25.9731 39.5834C26.139 39.4568 26.2766 39.2971 26.3772 39.1143C26.4778 38.9315 26.5392 38.7298 26.5574 38.522C26.5757 38.3141 26.5504 38.1048 26.4831 37.9073C26.4159 37.7098 26.3082 37.5285 26.1669 37.375L21.0106 30.5625L17.9794 22.875L18.6356 14.8438L19.3231 15.5625L24.0106 20.4062C24.1481 20.5479 24.3121 20.661 24.4933 20.7392C24.6745 20.8175 24.8694 20.8592 25.0667 20.8622C25.2641 20.8651 25.46 20.8291 25.6435 20.7563C25.8269 20.6834 25.9942 20.5752 26.1358 20.4377C26.2774 20.3002 26.3905 20.1361 26.4687 19.9549C26.5469 19.7737 26.5887 19.5789 26.5915 19.3815C26.5944 19.1842 26.5584 18.9882 26.4855 18.8048C26.4127 18.6213 26.3044 18.4541 26.1669 18.3125L21.4794 13.4688L18.2606 10.1875C17.4748 8.87378 16.0278 8 14.3856 8C12.9676 8 11.7417 8.66249 10.9169 9.6875L6.35439 10.625L2.57314 6.8125C2.43518 6.65822 2.26679 6.53415 2.07856 6.4481C1.89033 6.36205 1.68633 6.31588 1.47939 6.3125V6.3125Z" fill="#200500"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="createCharacter">
+            <!-- Наследственность -->
+            <div class="heredity" v-if="pages == 0">
+                <h1>Наследственность</h1>
+                <div class="floor">
+                    <div @click="genderSw(true)" v-if="!gender" class="male">
+                        <svg width="67" height="67" viewBox="0 0 67 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M49.6735 20.5361L61.9738 8.22285V17.7212V17.7322L61.9743 17.7432C62 18.326 62.2496 18.8764 62.6711 19.2796C63.0926 19.6829 63.6535 19.908 64.2369 19.908C64.8203 19.908 65.3812 19.6829 65.8027 19.2796C66.2242 18.8764 66.4738 18.326 66.4995 17.7432L66.5 17.7322V17.7212L66.5 2.76103L66.5 2.75673C66.4954 2.22541 66.258 1.73496 66.0838 1.44974C65.9971 1.30786 65.9034 1.17974 65.8274 1.10249L65.8261 1.10112C65.8136 1.08837 65.7611 1.03458 65.6859 0.994183C65.669 0.985099 65.6403 0.970794 65.6022 0.958359C65.4487 0.842227 65.2806 0.745894 65.1018 0.671976C64.827 0.558318 64.5326 0.499881 64.2352 0.5C64.2351 0.5 64.235 0.5 64.2349 0.5L49.2719 0.5C48.6721 0.5 48.097 0.738189 47.6729 1.1622C47.2487 1.58622 47.0105 2.16133 47.0105 2.76103C47.0105 3.36072 47.2487 3.93583 47.6729 4.35985C48.097 4.78386 48.6721 5.02205 49.2719 5.02205H58.7743L46.473 17.3363C41.0793 12.7551 34.1399 10.3901 27.0592 10.7321C19.822 11.0817 13.0046 14.2319 8.0487 19.5165C3.09279 24.801 0.387013 31.8056 0.503618 39.0488C0.620223 46.292 3.55007 53.2059 8.67351 58.3283C13.7969 63.4506 20.7122 66.3798 27.9569 66.4964C35.2015 66.613 42.2075 63.9078 47.4932 58.9529C52.7788 53.9981 55.9297 47.1821 56.2794 39.9464C56.6215 32.8669 54.2559 25.9288 49.6735 20.5361ZM65.7325 1.84197C65.6647 1.7158 65.5961 1.61139 65.5426 1.5397L65.9044 1.24983C65.9063 1.25406 65.9085 1.25912 65.9107 1.2649L65.911 1.26545C65.9148 1.27527 65.9333 1.32177 65.9399 1.38648C65.9433 1.41866 65.9481 1.4925 65.9209 1.58136C65.8952 1.66539 65.8377 1.7678 65.7325 1.84197ZM44.9437 55.1087L44.634 55.419C41.4168 58.5138 37.3776 60.625 32.9928 61.4979C28.4628 62.3996 23.767 61.9393 19.4985 60.1749C15.23 58.4105 11.5801 55.4212 9.00958 51.5845C6.43908 47.7477 5.06324 43.2355 5.05576 38.6176C5.04829 33.9997 6.40952 29.4831 8.9676 25.6381C11.5257 21.7931 15.1659 18.792 19.4287 17.0138C23.6915 15.2356 28.3857 14.7601 32.9186 15.6472C37.4327 16.5306 41.5852 18.7259 44.8565 21.9576C44.8692 21.9788 44.8858 22.0034 44.9067 22.0284C44.9543 22.0856 45.005 22.1228 45.0426 22.1461C45.0473 22.149 45.052 22.1518 45.0565 22.1544C49.3767 26.543 51.7941 32.4578 51.7829 38.6174C51.7716 44.8019 49.3129 50.7306 44.9437 55.1087Z" fill="white" stroke="white"/>
+                        </svg>
+                    </div>
+                    <div v-if="gender" class="male active">
+                        <svg width="67" height="67" viewBox="0 0 67 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M49.6735 20.5361L61.9738 8.22285V17.7212V17.7322L61.9743 17.7432C62 18.326 62.2496 18.8764 62.6711 19.2796C63.0926 19.6829 63.6535 19.908 64.2369 19.908C64.8203 19.908 65.3812 19.6829 65.8027 19.2796C66.2242 18.8764 66.4738 18.326 66.4995 17.7432L66.5 17.7322V17.7212L66.5 2.76103L66.5 2.75673C66.4954 2.22541 66.258 1.73496 66.0838 1.44974C65.9971 1.30786 65.9034 1.17974 65.8274 1.10249L65.8261 1.10112C65.8136 1.08837 65.7611 1.03458 65.6859 0.994183C65.669 0.985099 65.6403 0.970794 65.6022 0.958359C65.4487 0.842227 65.2806 0.745894 65.1018 0.671976C64.827 0.558318 64.5326 0.499881 64.2352 0.5C64.2351 0.5 64.235 0.5 64.2349 0.5L49.2719 0.5C48.6721 0.5 48.097 0.738189 47.6729 1.1622C47.2487 1.58622 47.0105 2.16133 47.0105 2.76103C47.0105 3.36072 47.2487 3.93583 47.6729 4.35985C48.097 4.78386 48.6721 5.02205 49.2719 5.02205H58.7743L46.473 17.3363C41.0793 12.7551 34.1399 10.3901 27.0592 10.7321C19.822 11.0817 13.0046 14.2319 8.0487 19.5165C3.09279 24.801 0.387013 31.8056 0.503618 39.0488C0.620223 46.292 3.55007 53.2059 8.67351 58.3283C13.7969 63.4506 20.7122 66.3798 27.9569 66.4964C35.2015 66.613 42.2075 63.9078 47.4932 58.9529C52.7788 53.9981 55.9297 47.1821 56.2794 39.9464C56.6215 32.8669 54.2559 25.9288 49.6735 20.5361ZM65.7325 1.84197C65.6647 1.7158 65.5961 1.61139 65.5426 1.5397L65.9044 1.24983C65.9063 1.25406 65.9085 1.25912 65.9107 1.2649L65.911 1.26545C65.9148 1.27527 65.9333 1.32177 65.9399 1.38648C65.9433 1.41866 65.9481 1.4925 65.9209 1.58136C65.8952 1.66539 65.8377 1.7678 65.7325 1.84197ZM44.9437 55.1087L44.634 55.419C41.4168 58.5138 37.3776 60.625 32.9928 61.4979C28.4628 62.3996 23.767 61.9393 19.4985 60.1749C15.23 58.4105 11.5801 55.4212 9.00958 51.5845C6.43908 47.7477 5.06324 43.2355 5.05576 38.6176C5.04829 33.9997 6.40952 29.4831 8.9676 25.6381C11.5257 21.7931 15.1659 18.792 19.4287 17.0138C23.6915 15.2356 28.3857 14.7601 32.9186 15.6472C37.4327 16.5306 41.5852 18.7259 44.8565 21.9576C44.8692 21.9788 44.8858 22.0034 44.9067 22.0284C44.9543 22.0856 45.005 22.1228 45.0426 22.1461C45.0473 22.149 45.052 22.1518 45.0565 22.1544C49.3767 26.543 51.7941 32.4578 51.7829 38.6174C51.7716 44.8019 49.3129 50.7306 44.9437 55.1087Z" fill="#200500" stroke="#200500"/>
+                        </svg>
+                    </div>
+                    <div @click="genderSw(false)" v-if="gender" class="female">
+                        <svg width="41" height="68" viewBox="0 0 41 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.5 20.0856C0.5 30.8865 9.28601 39.6728 20.0865 39.6728C30.8869 39.6728 39.6729 30.8865 39.6729 20.0856C39.6729 9.2856 30.8869 0.5 20.0865 0.5C9.28605 0.5 0.5 9.2856 0.5 20.0856ZM3.96946 20.0856C3.96946 11.1996 11.1999 3.96946 20.0865 3.96946C28.973 3.96946 36.2035 11.1996 36.2035 20.0856C36.2035 28.9726 28.973 36.2033 20.0865 36.2033C11.2 36.2033 3.96946 28.9726 3.96946 20.0856Z" fill="white" stroke="white"/>
+                            <path d="M18.3516 65.2196C18.3516 66.1778 19.1282 66.9544 20.0863 66.9544C21.0444 66.9544 21.821 66.1778 21.821 65.2196V37.9379C21.821 36.9797 21.0444 36.2031 20.0863 36.2031C19.1282 36.2031 18.3516 36.9797 18.3516 37.9379V65.2196Z" fill="white" stroke="white"/>
+                            <path d="M6.78161 53.3098H33.3913C34.3492 53.3098 35.126 52.5332 35.126 51.5751C35.126 50.6169 34.3494 49.8403 33.3913 49.8403H6.78161C5.82348 49.8403 5.04688 50.6169 5.04688 51.5751C5.04688 52.5332 5.82348 53.3098 6.78161 53.3098Z" fill="white" stroke="white"/>
+                        </svg>
+                    </div>
+                    <div v-if="!gender" class="female active">
+                        <svg width="41" height="68" viewBox="0 0 41 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.5 20.0856C0.5 30.8865 9.28601 39.6728 20.0865 39.6728C30.8869 39.6728 39.6729 30.8865 39.6729 20.0856C39.6729 9.2856 30.8869 0.5 20.0865 0.5C9.28605 0.5 0.5 9.2856 0.5 20.0856ZM3.96946 20.0856C3.96946 11.1996 11.1999 3.96946 20.0865 3.96946C28.973 3.96946 36.2035 11.1996 36.2035 20.0856C36.2035 28.9726 28.973 36.2033 20.0865 36.2033C11.2 36.2033 3.96946 28.9726 3.96946 20.0856Z" fill="#200500" stroke="#200500"/>
+                            <path d="M18.3516 65.2196C18.3516 66.1778 19.1282 66.9544 20.0863 66.9544C21.0444 66.9544 21.821 66.1778 21.821 65.2196V37.9379C21.821 36.9797 21.0444 36.2031 20.0863 36.2031C19.1282 36.2031 18.3516 36.9797 18.3516 37.9379V65.2196Z" fill="#200500" stroke="#200500"/>
+                            <path d="M6.78161 53.3098H33.3913C34.3492 53.3098 35.126 52.5332 35.126 51.5751C35.126 50.6169 34.3494 49.8403 33.3913 49.8403H6.78161C5.82348 49.8403 5.04688 50.6169 5.04688 51.5751C5.04688 52.5332 5.82348 53.3098 6.78161 53.3098Z" fill="#200500" stroke="#200500"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="parents">
+                    <div class="fatherBlock">
+                        <label>Отец:</label>
+                        <list id="father"></list>
+                    </div>
+                    <div class="fatherBlock">
+                        <label>Мать:</label>
+                        <list id="mother"></list>
+                    </div>
+                </div>
+                <div class="element">
 					<label>Схожесть:</label>
 					<div class="slider">
 						<input id="similar" type="range" value="0.5" step="0.1" min="0" max="1.0">
 					</div>
-					<output id="similar">0.5</output>
+					<span class="output" id="similar">0.5</span>
 				</div>
-				<div class="element">
+                <div class="element">
 					<label>Цвет кожи:</label>
 					<div class="slider">
 						<input id="skin" type="range" value="0.5" step="0.1" min="0" max="1">
 					</div>
-					<output id="skin">0.5</output>
+					<span class="output" id="skin">0.5</span>
 				</div>
-			</div>
-			<div v-if="pages == 1">
-				<a>Части лица</a>
-				<div style="top: 3vw;" class="lineapp2"></div>
-				<div class="scrolling">
-					<div class="element">
-						<label>Ширина носа:</label>
-						<div class="slider">
-							<input id="noseWidth" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-						<output id="noseWidth">0</output>
-					</div>
-					<div class="element">
-						<label>Высота носа:</label>
-						<div class="slider">
-							<input id="noseHeight" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-						<output id="noseHeight">0</output>
-					</div>
-					<div class="element">
-						<label>Длина кончика носа:</label>
-						<div class="slider">
-						<input id="noseTipLength" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-					<output id="noseTipLength">0</output>
-					</div>
-					<div class="element">
-					<label>Глубина моста носа:</label>
-						<div class="slider">
-							<input id="noseDepth" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-						<output id="noseDepth">0</output>
-					</div>
-					<div class="element">
-						<label>Высота кончика носа:</label>
-						<div class="slider">
-							<input id="noseTipHeight" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-						<output id="noseTipHeight">0</output>
-					</div>
-					<div class="element">
-						<label>Поломаность носа:</label>
-						<div class="slider">
-							<input id="noseBroke" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-						<output id="noseBroke">0</output>
-					</div>
-					<div class="element">
-						<label>Высота бровей:</label>
-						<div class="slider">
-							<input id="eyebrowHeight" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-						<output id="eyebrowHeight">0</output>
-					</div>
-					<div class="element">
-						<label>Глубина бровей:</label>
-						<div class="slider">
-							<input id="eyebrowDepth" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-						<output id="eyebrowDepth">0</output>
-					</div>
-					<div class="element">
-						<label>Высота скул:</label>
-						<div class="slider">
-							<input id="cheekboneHeight" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-						<output id="cheekboneHeight">0</output>
-					</div>
-					<div class="element">
-						<label>Ширина скул:</label>
-						<div class="slider">
-							<input id="cheekboneWidth" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-						<output id="cheekboneWidth">0</output>
-					</div>
-					<div class="element">
-						<label>Глубина щеки:</label>
-						<div class="slider">
-							<input id="cheekDepth" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-						<output id="cheekDepth">0</output>
-					</div>
-					<div class="element">
-						<label>Размер глаз:</label>
-						<div class="slider">
-							<input id="eyeScale" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-						<output id="eyeScale">0</output>
-					</div>
-				</div>
-			</div>
-			<div v-if="pages == 2">
-				<a>Внешний вид</a>
-				<div style="top: 3vw;" class="lineapp2"></div>
-				<div style="margin-top: -7vw;" class="fatherblock">
-					<p>Цвет глаз</p>
-					<list id="eyeColor"></list>
-				</div>
-				<div style="margin-top: 5vw; height: 21vw;" class="scrolling">
-					<div class="element">
-					<label>Толщина губ:</label>
-						<div class="slider">
-							<input id="lipThickness" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-						<output id="lipThickness">0</output>
-					</div>
-					<div class="element">
-						<label>Ширина челюсти:</label>
-						<div class="slider">
-							<input id="jawWidth" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-						<output id="jawWidth">0</output>
-					</div>
-					<div class="element">
-						<label>Форма челюсти:</label>
-						<div class="slider">
-							<input id="jawShape" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-						<output id="jawShape">0</output>
-					</div>
-					<div class="element">
-						<label>Высота подбородка:</label>
-						<div class="slider">
-							<input id="chinHeight" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-						<output id="chinHeight">0</output>
-					</div>
-					<div class="element">
-						<label>Глубина подбородка:</label>
-						<div class="slider">
-							<input id="chinDepth" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-						<output id="chinDepth">0</output>
-					</div>
-					<div class="element">
-						<label>Ширина подбородка:</label>
-						<div class="slider">
-							<input id="chinWidth" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-						<output id="chinWidth">0</output>
-					</div>
-					<div class="element">
-						<label>Подбородочный отступ:</label>
-						<div class="slider">
-							<input id="chinIndent" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-						<output id="chinIndent">0</output>
-					</div>
-					<div class="element">
-						<label>Обхват шеи:</label>
-						<div class="slider">
-							<input id="neck" type="range" value="0" step="0.1" min="-1" max="1">
-						</div>
-						<output id="neck">0</output>
-					</div>
-				</div>
-			</div>
-			<div v-if="pages == 3">
-				<a>Растительность</a>
-				<div style="top: 3vw;" class="lineapp2"></div>
-				<div style="margin-top: -7vw;" class="fatherblock">
-					<p>Волосы</p>
-					<list id="hairM" v-if="gender"></list>
+            </div>
+            <!-- Части лица -->
+            <div class="parts-face" v-if="pages == 1">
+                <h1>Части лица</h1>
+                <div class="listElement">
+                    <div class="element">
+                        <label>Ширина носа:</label>
+                        <div class="slider">
+                            <input id="noseWidth" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="noseWidth">0</span>
+                    </div>
+                    <div class="element">
+                        <label>Высота носа:</label>
+                        <div class="slider">
+                            <input id="noseHeight" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="noseHeight">0</span>
+                    </div>
+                    <div class="element">
+                        <label>Длина кончика носа:</label>
+                        <div class="slider">
+                        <input id="noseTipLength" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="noseTipLength">0</span>
+                    </div>
+                    <div class="element">
+                    <label>Глубина моста носа:</label>
+                        <div class="slider">
+                            <input id="noseDepth" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="noseDepth">0</span>
+                    </div>
+                    <div class="element">
+                        <label>Высота кончика носа:</label>
+                        <div class="slider">
+                            <input id="noseTipHeight" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="noseTipHeight">0</span>
+                    </div>
+                    <div class="element">
+                        <label>Поломаность носа:</label>
+                        <div class="slider">
+                            <input id="noseBroke" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="noseBroke">0</span>
+                    </div>
+                    <div class="element">
+                        <label>Высота бровей:</label>
+                        <div class="slider">
+                            <input id="eyebrowHeight" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="eyebrowHeight">0</span>
+                    </div>
+                    <div class="element">
+                        <label>Глубина бровей:</label>
+                        <div class="slider">
+                            <input id="eyebrowDepth" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="eyebrowDepth">0</span>
+                    </div>
+                    <div class="element">
+                        <label>Высота скул:</label>
+                        <div class="slider">
+                            <input id="cheekboneHeight" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="cheekboneHeight">0</span>
+                    </div>
+                    <div class="element">
+                        <label>Ширина скул:</label>
+                        <div class="slider">
+                            <input id="cheekboneWidth" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="cheekboneWidth">0</span>
+                    </div>
+                    <div class="element">
+                        <label>Глубина щеки:</label>
+                        <div class="slider">
+                            <input id="cheekDepth" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="cheekDepth">0</span>
+                    </div>
+                    <div class="element">
+                        <label>Размер глаз:</label>
+                        <div class="slider">
+                            <input id="eyeScale" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="eyeScale">0</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Внешний вид -->
+            <div class="appearance" v-if="pages == 2">
+                <h1>Внешний вид</h1>
+                <div class="listElement">
+                    <div class="fatherBlock">
+                        <label>Цвет глаз:</label>
+                        <list id="eyeColor"></list>
+                    </div>
+                    <div class="element">
+                        <label>Толщина губ:</label>
+                        <div class="slider">
+                            <input id="lipThickness" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="lipThickness">0</span>
+                    </div>
+                    <div class="element">
+                        <label>Ширина челюсти:</label>
+                        <div class="slider">
+                            <input id="jawWidth" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="jawWidth">0</span>
+                    </div>
+                    <div class="element">
+                        <label>Форма челюсти:</label>
+                        <div class="slider">
+                            <input id="jawShape" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="jawShape">0</span>
+                    </div>
+                    <div class="element">
+                        <label>Высота подбородка:</label>
+                        <div class="slider">
+                            <input id="chinHeight" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="chinHeight">0</span>
+                    </div>
+                    <div class="element">
+                        <label>Глубина подбородка:</label>
+                        <div class="slider">
+                            <input id="chinDepth" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="chinDepth">0</span>
+                    </div>
+                    <div class="element">
+                        <label>Ширина подбородка:</label>
+                        <div class="slider">
+                            <input id="chinWidth" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="chinWidth">0</span>
+                    </div>
+                    <div class="element">
+                        <label>Подбородочный отступ:</label>
+                        <div class="slider">
+                            <input id="chinIndent" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="chinIndent">0</span>
+                    </div>
+                    <div class="element">
+                        <label>Обхват шеи:</label>
+                        <div class="slider">
+                            <input id="neck" type="range" value="0" step="0.1" min="-1" max="1">
+                        </div>
+                        <span class="output" id="neck">0</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Растительность -->
+            <div class="vegetation" v-if="pages == 3">
+                <h1>Растительность</h1>
+                <div class="fatherBlock">
+                    <label>Волосы:</label>
+                    <list id="hairM" v-if="gender"></list>
 					<list id="hairF" v-if="!gender"></list>
-				</div>
-				<div style="margin-top: -2vw;" class="fatherblock">
-					<p>Брови</p>
-					<list id="eyebrowsM" v-if="gender"></list>
+                </div>
+                <div class="fatherBlock">
+                    <label>Брови:</label>
+                    <list id="eyebrowsM" v-if="gender"></list>
 					<list id="eyebrowsF" v-if="!gender"></list>
-				</div>
-				<div style="margin-top: 3vw;" class="fatherblock">
-					<p>Цвет волос</p>
-					<list id="hairColor"></list>
-				</div>
-				<div v-if="gender" style="margin-top: 8vw;" class="fatherblock">
-					<p>Борода</p>
-					<list id="beard"></list>
-				</div>
-			</div>
-			<div v-if="pages == 4">
-				<a>Одежда</a>
-				<div style="top: 3vw;" class="lineapp2"></div>
-				<div style="margin-top: -7vw;" class="fatherblock">
-					<p>Верхняя одежда</p>
+                </div>
+                <div class="fatherBlock">
+                    <label>Цвет волос:</label>
+                    <list id="hairColor"></list>
+                </div>
+                <div class="fatherBlock">
+                    <label>Борода:</label>
+                    <list id="beard"></list>
+                </div>
+            </div>
+            <!-- Одежда -->
+            <div class="clothes" v-if="pages == 4">
+                <h1>Одежда</h1>
+                <div class="fatherBlock">
+					<label>Верхняя одежда</label>
 					<list id="ClothesTop"></list>
 				</div>
-				<div style="margin-top: -2vw;" class="fatherblock">
-					<p>Штаны</p>
+				<div class="fatherBlock">
+					<label>Штаны</label>
 					<list id="ClothesPants"></list>
 				</div>
-				<div style="margin-top: 3vw;" class="fatherblock">
-					<p>Обувь</p>
+				<div class="fatherBlock">
+					<label>Обувь</label>
 					<list id="ClothesShoes"></list>
 				</div>
-			</div>
-		</div>
-	</div>
-	<script src="./js/library/jquery-3.2.1.min.js"></script>
-	<script src="./js/rangeslider.min.js"></script>
-    <script src="./js/character.js"></script>
+            </div>
+        </div>
+        <div class="finalBlock">
+            <div class="age">
+                <label>Возраст от 18 до 100:</label>
+                <div class="input">
+                    <input type="text" v-model="age" placeholder="Введите возраст" maxlength="3" onkeyup="this.value = this.value.replace (/[^0-9+]/, '')">
+                </div>
+            </div>
+            <div @click="save" class="button">Создать</div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="./jquery-3.2.1.min.js"></script>
+	<script src="./rangeslider.min.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>

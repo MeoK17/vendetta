@@ -19,25 +19,25 @@ let auth = new Vue({
         select: function(id) {
             switch(id) {
                 case 'auth':
-                    if(!this.login) return mp.trigger('notify:pushNotify', 1, 1, 'Введите логин', 3000);
-                    if(this.login.length < 3) return mp.trigger('notify:pushNotify', 1, 1, 'Логин слишком короткий', 3000);
-                    if(!this.password) return mp.trigger('notify:pushNotify', 1, 1, 'Введите пароль', 3000);
-                    if(this.password.length < 6) return mp.trigger('notify:pushNotify', 1, 1, 'Пароль слишком короткий', 3000);
+                    if(!this.login) return mp.trigger('notify:pushNotify', 1, 8, 'Введите логин', 3000);
+                    if(this.login.length < 3) return mp.trigger('notify:pushNotify', 1, 8, 'Логин слишком короткий', 3000);
+                    if(!this.password) return mp.trigger('notify:pushNotify', 1, 8, 'Введите пароль', 3000);
+                    if(this.password.length < 6) return mp.trigger('notify:pushNotify', 1, 8, 'Пароль слишком короткий', 3000);
                     mp.trigger('auth:accountAuth', JSON.stringify({login: this.login, password: this.password}));
                     break;
                 case 'register':
-                    if(!this.email) return mp.trigger('notify:pushNotify', 1, 1, 'Введите почту', 3000);
-                    if(!/^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i.test(this.email)) return mp.trigger('notify:pushNotify', 1, 1, 'Почта введена не верно', 3000);
-                    if(!this.login) return mp.trigger('notify:pushNotify', 1, 1, 'Введите логин', 3000);
-                    if(this.login.length < 3) return mp.trigger('notify:pushNotify', 1, 1, 'Логин слишком короткий', 3000);
-                    if(!this.password) return mp.trigger('notify:pushNotify', 1, 1, 'Введите пароль', 3000);
-                    if(this.password.length < 6) return mp.trigger('notify:pushNotify', 1, 1, 'Пароль слишком короткий', 3000);
-                    if(this.password != this.confirmPassword) return mp.trigger('notify:pushNotify', 1, 1, 'Пароли не совпадают', 3000);
+                    if(!this.email) return mp.trigger('notify:pushNotify', 1, 8, 'Введите почту', 3000);
+                    if(!/^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i.test(this.email)) return mp.trigger('notify:pushNotify', 1, 8, 'Почта введена не верно', 3000);
+                    if(!this.login) return mp.trigger('notify:pushNotify', 1, 8, 'Введите логин', 3000);
+                    if(this.login.length < 3) return mp.trigger('notify:pushNotify', 1, 8, 'Логин слишком короткий', 3000);
+                    if(!this.password) return mp.trigger('notify:pushNotify', 1, 8, 'Введите пароль', 3000);
+                    if(this.password.length < 6) return mp.trigger('notify:pushNotify', 1, 8, 'Пароль слишком короткий', 3000);
+                    if(this.password != this.confirmPassword) return mp.trigger('notify:pushNotify', 1, 8, 'Пароли не совпадают', 3000);
                     mp.trigger('auth:accountRegistration', JSON.stringify({email: this.email, login: this.login, password: this.password}));
                     break;
                 case 'restore':
-                    if(!this.email) return mp.trigger('notify:pushNotify', 1, 1, 'Введите почту', 3000);
-                    if(!/^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i.test(this.email)) return mp.trigger('notify:pushNotify', 1, 1, 'Почта введена не верно', 3000);
+                    if(!this.email) return mp.trigger('notify:pushNotify', 1, 8, 'Введите почту', 3000);
+                    if(!/^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i.test(this.email)) return mp.trigger('notify:pushNotify', 1, 8, 'Почта введена не верно', 3000);
                     //mp.trigger('auth:accountAuth', JSON.stringify({login: this.login, password: this.password}));
                     break;
                 case 'registerShow':

@@ -1,4 +1,4 @@
-﻿var data = {
+var data = {
     "father":["Бенджамин", "Даниэль", "Джошуа", "Ной", "Андрей", "Хуан", "Алекс", "Исаак", "Эван", "Итан", "Винсент", "Ангел", "Диего", "Адриан", "Габриэль", "Майкл", "Сантьяго", "Кевин", "Луи", "Сэмюэль", "Энтони", "Клод", "Нико", "Джон"],
     "mother":["Ханна", "Обри", "Жасмин", "Жизель", "Амелия", "Изабелла", "Зои", "Ава", "Камила", "Вайолет", "София", "Эвелин", "Николь", "Эшли", "Грейси", "Брианна", "Натали", "Оливия", "Элизабет", "Шарлотта", "Эмма","Мисти"],
     "eyebrowsM":["Нет", "Уравновешенный", "Модный", "Клеопатра", "Загадочный", "Женственный", "Соблазнительный", "Зажатый", "Чола", "Триумф", "Беззаботный", "Пышный", "Грызун", "Двойной трамвай", "Тонкий", "Карандашный", "Мать-щипач", "Прямой и узкий", "Естественный", "Пушистый", "Неопрятный", "Гусеница", "Обычный", "Средиземноморский", "Ухоженный", "Бушели", " Пернатый", "Колючий", "Однобровый", "Крылатый", "Тройной трамвай", "Арочный трамвай", "Вырезы", "Исчезающий", "Сольный трамвай"],
@@ -43,7 +43,7 @@ Vue.component('list',{
     }
 })
 var editor = new Vue({
-    el: "#app",
+    el: ".character",
     data: {
         active: true,
         gender: true,
@@ -55,10 +55,10 @@ var editor = new Vue({
         genderSw: function(type){
             if(type){
                 this.gender=true
-                mp.trigger('characterGender',"Male")
+                mp.trigger('character:CharacterGender',"Male")
             } else {
                 this.gender=false
-                mp.trigger('characterGender',"Female")
+                mp.trigger('character:CharacterGender',"Female")
             }
         },
 		gopage: function(id) {
@@ -67,7 +67,7 @@ var editor = new Vue({
 			$(document).on('input', 'input[type="range"]', function(e) {
 				let id = e.target.id;
 				let val = e.target.value;
-				$('output#'+id).html(val);
+				$('.output#'+id).html(val);
 				mp.trigger('editorList', id, Number(val));
 			});
 			$('input[type=range]').rangeslider({
@@ -79,7 +79,7 @@ var editor = new Vue({
 				 $(document).on('input', 'input[type="range"]', function(e) {
 					let id = e.target.id;
 					let val = e.target.value;
-					$('output#'+id).html(val);
+					$('.output#'+id).html(val);
 					mp.trigger('editorList', id, Number(val));
 				});
 				$('input[type=range]').rangeslider({
@@ -91,7 +91,7 @@ var editor = new Vue({
 				 $(document).on('input', 'input[type="range"]', function(e) {
 					let id = e.target.id;
 					let val = e.target.value;
-					$('output#'+id).html(val);
+					$('.output#'+id).html(val);
 					mp.trigger('editorList', id, Number(val));
 				});
 				$('input[type=range]').rangeslider({
@@ -101,7 +101,7 @@ var editor = new Vue({
 			}, 1);
 		},
 		dancing: function() {
-			mp.trigger("client::characterpeddancing");
+			mp.trigger("charater:CharacterPedDancing");
 		},
 		random: function() {
 			function getRandomItem(arr) {
@@ -187,8 +187,7 @@ var editor = new Vue({
             }
 		},
         save: function(){
-            //console.log('characterSave')
-            mp.trigger('characterSave', this.age)
+            mp.trigger('character:CharacterSave', this.age)
         }
     }
 });
@@ -196,7 +195,7 @@ $(function() {
     $(document).on('input', 'input[type="range"]', function(e) {
         let id = e.target.id;
         let val = e.target.value;
-        $('output#'+id).html(val);
+        $('.output#'+id).html(val);
         mp.trigger('editorList', id, Number(val));
     });
     

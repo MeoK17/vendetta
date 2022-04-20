@@ -110,7 +110,7 @@ function updateClothes() {
     localplayer.setComponentVariation(3, validTorsoIDs[currentGender][outClothes], 0, 0);
 }
 
-mp.events.add('characterGender', (param) => {
+mp.events.add('character:CharacterGender', (param) => {
     gender = (param == "Male") ? true : false;
     if (gender) {
         localplayer.model = mp.game.joaat('mp_m_freemode_01');
@@ -311,11 +311,11 @@ var clothesTop = null;
 var clothesPants = null;
 var clothesShoes = null;
 
-mp.events.add('characterSave', (age) => {
+mp.events.add('character:CharacterSave', (age) => {
 	if(new Date().getTime() - global.lastCheck < 1000) return; 
 	global.lastCheck = new Date().getTime();
 	if (age == null || age < 18 || age > 90) {
-		mp.events.call('notify:pushNotify', 1, 9, "Возраст должен быть от 18 лет и до 90", 3000);
+		mp.events.call('notify:pushNotify', 1, 8, "Возраст должен быть от 18 лет и до 90", 3000);
 		return;
 	}
 	if(editorBrowser != null) {
@@ -344,11 +344,12 @@ mp.events.add('characterSave', (age) => {
 		};
 
 		setTimeout(function () {
-			mp.events.call('notify:pushNotify', [2, 9, "Вы успешно создали персонажа", 3000]);
-			mp.events.callRemote("SaveCharacter", currentGender, father, mother, similarity * 0.01, skin * 0.01, JSON.stringify(features), JSON.stringify(appearance_values), JSON.stringify(hair_or_colors), /*clothesTop, clothesPants, clothesShoes,*/ age);
+			mp.events.call('notify:pushNotify', [2, 8, "Приятной игры", 3000]);
+			mp.events.callRemote("character:SaveCharacter", currentGender, father, mother, similarity * 0.01, skin * 0.01, JSON.stringify(features), JSON.stringify(appearance_values), JSON.stringify(hair_or_colors), /*clothesTop, clothesPants, clothesShoes,*/ age);
 		}, 500);
 	}
 });
+
 var skycam = false;
 mp.events.add('SetSkyCameraCreator', () => {
 	skycam = true;
@@ -356,7 +357,7 @@ mp.events.add('SetSkyCameraCreator', () => {
 
 var editorBrowser = null;
 
-mp.events.add('CreatorCamera', () => {
+mp.events.add('character:CreatorCamera', () => {
 	if (skycam) {
 		mp.game.invoke(Natives.SWITCH_OUT_PLAYER, localplayer.handle, 0, parseInt(1));
 		setTimeout(() => {
@@ -394,7 +395,7 @@ mp.events.add('CreatorCamera', () => {
 		}, 100);
 		localplayer.freezePosition(true);
 		localplayer.setRotation(0.0, 0.0, -250.0, 2, true);
-		mp.events.call('sound.main');
+		//mp.events.call('sound.main');
 		bodyCamStart = localplayer.position;
 		var camValues = { Angle: localplayer.getRotation(2).z + 90, Dist: 0.6, Height: 0.6 };
 		var pos = getCameraOffset(creatorCoords.camera, camValues.Angle, camValues.Dist);
@@ -414,7 +415,7 @@ mp.events.add('CreatorCamera', () => {
 });
 
 var playerPlayedAnimation = false;
-mp.events.add("client::characterpeddancing", () => {
+mp.events.add("charater:CharacterPedDancing", () => {
 	if (!playerPlayedAnimation) {
 		playerPlayedAnimation = true;
 		localplayer.taskPlayAnim("anim@mp_player_intcelebrationmale@cats_cradle", "cats_cradle", 1, 1, -1, 1, 0, false, false, false);
@@ -443,9 +444,9 @@ function checkCamInAirCharSelectChar() {
     }
 }
 
-mp.events.add('client::gospawnAfterReg', () => {
+/*mp.events.add('client::gospawnAfterReg', () => {
 	mp.players.local.taskGoToCoordAnyMeans(-488.9584, -695.97485, 33.214658, 1, 0, false, 12, 1000);
-});
+});*/
 
 mp.events.add('render', () => {
 	if (localplayer.getVariable('playerWalkToSpawn')) {
@@ -453,7 +454,7 @@ mp.events.add('render', () => {
 	}
 });
 
-mp.events.add('DestroyCamera', () => {
+mp.events.add('character:DestroyCamera', () => {
     if (bodyCam == null) return;
     bodyCam.setActive(false);
     bodyCam.destroy();
@@ -469,18 +470,10 @@ mp.events.add('DestroyCamera', () => {
 
     localplayer.stopAnim("amb@world_human_guard_patrol@male@base", "base", 0.0)
     localplayer.freezePosition(false);
-    mp.events.call('showHUD', true);
-    mp.events.call('showAltTabHint');
-	mp.events.call('sound.main.next');
-    /*if (global.menu == null)
-    {
-        global.loggedin = true;
-        global.menu = mp.browsers["new"]('http://package/browser/menu.html');
-        // global.helpmenu = mp.browsers["new"]('http://package/browser/help.html');
-    }*/
+	//mp.events.call('sound.main.next');
 });
 
-mp.events.add('entityStreamIn', (entity) => {
+/*mp.events.add('entityStreamIn', (entity) => {
     if (entity.type !== 'player') return;
 
     if (entity.getVariable('HAT_DATA') != undefined) {
@@ -488,4 +481,4 @@ mp.events.add('entityStreamIn', (entity) => {
         if (data[0] != -1)
             entity.setPropIndex(0, data[0], data[1], true);
     }
-});
+});*/

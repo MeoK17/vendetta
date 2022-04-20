@@ -13,226 +13,234 @@ body {
 
 .bank {
     position: absolute;
-    background: rgba(25, 25, 25, 0.9);
-    background-size: auto;
-    width: 100%;
     height: 100%;
+    width: 100%;
+    background: rgba(34, 50, 84, 0.9);
 }
 
-.bank .top_block {}
-
-.bank .top_block .header {
+.bank .header {
     position: absolute;
-    top: 61px;
+    top: 62px;
     left: 57px;
-    font-weight: 600;
-    font-size: 46px;
     color: #ffffff;
-    line-height: 58px;
 }
 
-.bank .top_block .buttons {
-    position: absolute;
-    top: 61px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    display: flex;
+.bank .header h1 {
+    font-weight: 500;
+    font-size: 35px;
 }
 
-.bank .top_block .buttons .button {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.16);
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    padding: 10px 0px;
-    width: 170px;
-    font-weight: 400;
+.bank .header .text {
+    font-weight: 500;
     font-size: 25px;
-    border-radius: 5px;
-    text-align: center;
-    margin-left: 40px;
-    cursor: pointer;
-    transition: 0.4s;
+    margin-top: 12px;
 }
 
-.bank .top_block .buttons .button:first-child {
-    margin-left: 0;
+.bank .header .text span {
+    color: #FFC500;
 }
 
-.bank .top_block .buttons .button.active {
-    background: #D4400E;
-    border: 2px solid rgba(212, 64, 14, 0.8);
-    box-shadow: 0 0 20px 10px #BA2600;
-	transition: 0.4s;
+.bank .street {
+    position: absolute;
+    top: 62px;
+    right: 57px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 35px;
 }
 
-.bank .top_block .buttons .button:hover {
-    background: #D4400E;
-    border: 2px solid rgba(212, 64, 14, 0.8);
-    box-shadow: 0 0 20px 10px #BA2600;
-	transition: 0.4s;
-}
-
-.bank .middle_block {
+.bank .container {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.bank .middle_block .container {}
+.bank .container .takeoff {}
 
-.bank .middle_block .container .replenishment {
+.bank .container .takeoff h1 {
+    font-weight: 500;
+    font-size: 28px;
     color: #ffffff;
-    text-align: -webkit-center;
 }
 
-.bank .middle_block .container .replenishment .input {
-    background: #121212;
-    border: 2px solid #3E3E3E;
-    padding: 19px 26px;
-    border-radius: 5px;
-    width: 500px;
-    margin-bottom: 25px;
+.bank .container .takeoff .block {
+    margin-top: 12px;
+    max-width: 500px;
+    text-align: center;
 }
 
-.bank .middle_block .container .replenishment .input input {
-    width: 100%;
+.bank .container .takeoff .block span {
+    font-weight: 400;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.bank .container .takeoff .block .list {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bank .container .takeoff .block .list .sum {
+    font-weight: 400;
+    font-size: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    width: 240px;
+    padding: 20px 0;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.bank .container .takeoff .block .list .sum:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(5)):not(:nth-child(6))   {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.bank .container .takeoff .block .list .sum:not(:nth-child(1)):not(:nth-child(3)):not(:nth-child(5)) {
+    margin-left: 20px;
+}
+
+.bank .container .takeoff .block .list .sum:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transition: .4s;
+}
+
+.bank .container .takeoff .block .list .sum.active {
+    background: #FFC500;
+    color: #200500;
+    transition: .4s;
+}
+
+.bank .container .takeoff .block .input {
+    margin-top: 33px;
+    padding: 16px 24px;
+    background: rgba(255, 255, 255, 0.1);
+    text-align: left;
+}
+
+.bank .container .takeoff .block .input input {
+    font-weight: 400;
+    font-size: 28px;
     background: none;
     border: none;
     outline: none;
     color: #ffffff;
-    font-weight: 400;
-    font-size: 28px;
-}
-
-.bank .middle_block .container .replenishment .input input::placeholder {}
-
-.bank .middle_block .container .replenishment .text{
-    width: 495px;
-    font-weight: 400;
-    font-size: 28px;
-}
-
-.bank .middle_block .container .replenishment {}
-
-.bank .middle_block .container .replenishment .input {
-    background: #121212;
-    border: 2px solid #3E3E3E;
-    padding: 19px 26px;
-    border-radius: 5px;
-    width: 500px;
-    margin-bottom: 25px;
-}
-
-.bank .middle_block .container .replenishment .input input {
     width: 100%;
-    background: none;
-    border: none;
-    outline: none;
-    color: #ffffff;
-    font-weight: 400;
-    font-size: 28px;
 }
 
-.bank .middle_block .container .replenishment .input input::placeholder {}
-
-.bank .middle_block .container .replenishment .text{
-    width: 495px;
-    font-weight: 400;
-    font-size: 28px;
+.bank .container .takeoff .block .input input::-webkit-outer-spin-button,
+.bank .container .takeoff .block .input input::-webkit-inner-spin-button {
+    display: none;
 }
 
-.bank .middle_block .container .withdrawal {
-    color: #ffffff;
-    text-align: -webkit-center;
+.bank .container .takeoff .block .input input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
 
-.bank .middle_block .container .withdrawal .input {
-    background: #121212;
-    border: 2px solid #3E3E3E;
-    padding: 19px 26px;
-    border-radius: 5px;
-    width: 500px;
-    margin-bottom: 25px;
-}
-
-.bank .middle_block .container .withdrawal .input input {
-    width: 100%;
-    background: none;
-    border: none;
-    outline: none;
-    color: #ffffff;
-    font-weight: 400;
-    font-size: 28px;
-}
-
-.bank .middle_block .container .withdrawal .input input::placeholder {}
-
-.bank .middle_block .container .withdrawal .text{
-    width: 495px;
-    font-weight: 400;
-    font-size: 28px;
-}
-
-.bank .bottom_block {}
-
-.bank .bottom_block .button {
+.bank .chapter {
     position: absolute;
-    bottom: 61px;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 57px;
+    width: 286px;
+}
+
+.bank .chapter .button {
+    font-weight: 400;
+    font-size: 34px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    padding: 16px 0;
+    text-align: center;
+    margin-top: 20px;
+    transition: .4s;
+    cursor: pointer;
+}
+
+.bank .chapter .button:first-child {
+    margin-top: 0;
+}
+
+.bank .chapter .button:hover {
+    transition: .4s;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.bank .chapter .button.active {
+    transition: .4s;
+    background: #FFC500;
+    color: #200500;
+}
+
+.bank .final {
+    position: absolute;
+    bottom: 62px;
     left: 50%;
     transform: translate(-50%, 0);
-    cursor: pointer;
-    background: rgba(255, 255, 255, 0.16);
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    padding: 10px 0;
-    width: 200px;
-    text-align: center;
-    color: #ffffff;
+}
+
+.bank .final .text {
+    text-align: right;
+    width: 480px;
     font-weight: 400;
-    font-size: 25px;
-    transition: 0.4s;
-}
-
-.bank .bottom_block .button:hover {
-    background: #D4400E;
-    border: 2px solid rgba(212, 64, 14, 0.8);
-    box-shadow: 0 0 20px 10px #BA2600;
-	transition: 0.4s;
-}
-
-.bank .bottom_block .exit {
-    position: absolute;
-    bottom: 61px;
-    right: 57px;
-    cursor: pointer;
-    background: rgba(255, 255, 255, 0.16);
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    padding: 10px 40px;
-    text-align: center;
+    font-size: 28px;
     color: #ffffff;
-    font-size: 25px;
-    transition: 0.4s;
 }
 
-.bank .bottom_block .exit:hover {
-    background: #D4400E;
-    border: 2px solid rgba(212, 64, 14, 0.8);
-    box-shadow: 0 0 20px 10px #BA2600;
-	transition: 0.4s;
+.bank .final .buttons {
+    margin-top: 31px;
+    display: flex;
+}
+
+.bank .final .buttons .button {
+    width: 100%;
+    padding: 14px 0;
+    text-align: center;
+    font-weight: 400;
+    font-size: 28px;
+    color: #200500;
+    margin-left: 20px;
+    transition: .4s;
+    cursor: pointer;
+}
+
+.bank .final .buttons .button:first-child {
+    margin-left: 0;
+}
+
+.bank .final .buttons .button.yellow {
+    background: #FFC500;
+}
+
+.bank .final .buttons .button.white {
+    background: #FFFFFF;
+}
+
+.bank .final .buttons .button.yellow:hover {
+    background: #D39900;
+    transition: .4s;
+}
+
+.bank .final .buttons .button.white:hover {
+    background: #C2C2C2;
+    transition: .4s;
 }
 
 @media  (max-width: 1100px)  {
-    body {zoom: 60%}
+    body {zoom: 50%}
 }
 @media  (max-width: 1300px)  {
-    body {zoom: 70%}
+    body {zoom: 60%}
 }
 @media (min-width: 1301px) and (max-width: 1400px) {
-    body {zoom: 80%}
+    body {zoom: 70%}
 }
 @media (min-width: 1401px) and (max-width: 1650px) {
-    body {zoom: 90%}
+    body {zoom: 80%}
 }
 @media (min-width: 1651px) and (max-width: 2560px) {
-    body {zoom: 100%}
+    body {zoom: 90%}
 }

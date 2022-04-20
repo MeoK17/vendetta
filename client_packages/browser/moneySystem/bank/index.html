@@ -7,33 +7,45 @@
 </head>
 <body>
     <div class="bank" v-show="active">
-        <div class="top_block">
-            <div class="header">FLEECA BANK</div>
-            <div class="buttons">
-                <div v-for="chapter in chapters" class="button" :class="position == chapter.id ? `active` : ''" @click="position = chapter.id; money = 0">{{chapter.name}}</div>
+        <div class="header">
+            <h1>БАНК</h1>
+            <div class="text">
+                <span>Добро пожаловать</span> {{playerName}}
             </div>
-        </div> 
-        <div class="middle_block">
-            <div class="container">
-                <div class="replenishment" v-if="position == 1">
-                    <div class="input"><input type="text" placeholder="Ввелите сумму" v-model="money"></div>
-                    <div class="text">При пополнение средств комиссия банка составляет 0%</div>
+        </div>
+        <div class="street">{{street}}</div>
+        <div class="container">
+            <div class="takeoff" v-if="position == 1">
+                <h1>Снятие наличных</h1>
+                <div class="block">
+                    <span>Выберите сумму которую хотели бы снять:</span>
+                    <div class="list">
+                        <div v-for="takeSum in takesSum" :class="money == takeSum.sum ? `active` : ''" @click="money = takeSum.sum;" class="sum">{{takeSum.sum}}$</div>
+                    </div>
+                    <div class="input"><input type="text" maxlength="9" v-model="money" placeholder="Введите сумму"></div>
                 </div>
-                <div class="withdrawal" v-if="position == 2">
-                    <div class="input"><input type="text" placeholder="Ввелите сумму" v-model="money"></div>
-                    <div class="text">При снятии средств комиссия банка составляет 3%</div>
-                </div>
-                <div class="replenishment" v-if="position == 3">
-                    <div class="text">Идите нахуй, тут пусто</div>
-                </div>
-                <div class="replenishment" v-if="position == 4">
-                    <div class="text">Идите нахуй, тут пусто</div>
+            </div>
+            <div class="takeoff" v-if="position == 2">
+                <h1>Снятие наличных</h1>
+                <div class="block">
+                    <span>Выберите сумму которую хотели бы пополнить:</span>
+                    <div class="list">
+                        <div v-for="takeSum in takesSum" :class="money == takeSum.sum ? `active` : ''" @click="money = takeSum.sum;" class="sum">{{takeSum.sum}}$</div>
+                    </div>
+                    <div class="input"><input type="text" maxlength="9" v-model="money" placeholder="Введите сумму"></div>
                 </div>
             </div>
         </div>
-        <div class="bottom_block">
-            <div v-for="chapter in chapters" class="button" v-show="position == chapter.id" @click="transition(chapter.type)">{{chapter.button}}</div>
-            <div class="exit" @click="close()">ВЫЙТИ</div>
+        <div class="chapter">
+            <div v-for="chapter in chapters" class="button" :class="position == chapter.id ? `active` : ''" @click="position = chapter.id; money = null; takePosition = null;">{{chapter.name}}</div>
+        </div>
+        <div class="final">
+            <div class="text" v-if="position == 1">При снятии наличных комиссия банка составляет 3%</div>
+            <div class="text" v-if="position == 2">При пополнении счета комиссия банка составляет 0%</div>
+            <div class="buttons">
+                <div class="button white" @click="close()">Выйти</div>
+                <div v-for="chapter in chapters" class="button yellow" v-show="position == chapter.id" @click="transition(chapter.type)">{{chapter.button}}</div>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
